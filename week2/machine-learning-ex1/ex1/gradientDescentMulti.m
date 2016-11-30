@@ -17,8 +17,8 @@ for iter = 1:num_iters
     %       of the cost function (computeCostMulti) and gradient here.
     %
 
-    temp = (X*theta-y)'*X; % the value behine ∑ (mx2)
-    SUM = sum(temp,1); % 1*2
+    temp = (X*theta-y)'*X; % the value behine ∑ (mx(n+1)))
+    SUM = sum(temp,1); % 1*(n+1)
     theta = theta - alpha/m*SUM';
 
 

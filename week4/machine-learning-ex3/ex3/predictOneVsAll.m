@@ -30,7 +30,12 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
+% Don't forget sigmoid
+results = sigmoid(X*all_theta'); % (m * num_labels) m row and num_labels colunm
 
+% max_possibility the highest possibility of predicting 
+% p means where the highest possibility also it means the predicted num
+[max_possibility, p] = max(results, [], 2);
 
 
 

@@ -85,9 +85,9 @@ for k = 1:num_labels
 end
 J = 1/m * J;
 
-regularizationValue = sum(sum(Theta1(:,1:input_layer_size))) + sum(sum(Theta2(:,1:hidden_layer_size)));
-regularizationValue = regularizationValue * lambda/m;
-
+regularizationValue = sum(sum(Theta1(:,2:input_layer_size+1).^2)) + sum(sum(Theta2(:,2:hidden_layer_size+1).^2));
+regularizationValue = lambda/(2*m) * regularizationValue ;
+J = J + regularizationValue;
 
 
 

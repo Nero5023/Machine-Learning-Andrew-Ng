@@ -104,6 +104,14 @@ for t=1:m
     delta2 = delta2(2:end);
     Theta1_grad = Theta1_grad + delta2*a1(t,:);
     Theta2_grad = Theta2_grad + delta3*a2(t,:);
+
+    regularization1 = lambda/m * Theta1;
+    regularization2 = lambda/m * Theta2;
+    regularization1(:,1) = 0;
+    regularization2(:,1) = 0;
+
+    Theta1_grad = Theta1_grad + regularization1;
+    Theta2_grad = Theta2_grad + regularization2;
 end
 
 Theta1_grad = 1/m * Theta1_grad;

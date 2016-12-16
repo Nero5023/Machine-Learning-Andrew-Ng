@@ -61,9 +61,29 @@ Theta2_grad = zeros(size(Theta2));
 %               the regularization separately and then add them to Theta1_grad
 %               and Theta2_grad from Part 2.
 %
-
-
-
+X = [ones(m,1) X];
+z1 = X * Theta1';
+a1 = sigmoid(z1);
+a1 = [ones(m,1) a1];
+z2 = a1 * Theta2';
+a2 = sigmoid(z2);
+hypothesis = a2;
+% Both method are right
+% 下面两个方法都是对的
+% for k = 1:num_labels
+%     for i = 1:m
+%         yk = (y(i) == k);
+%         j = -yk*log(hypothesis(i,k)) - (1-yk)*log(1-hypothesis(i,k));
+%         J = J + j;
+%     end
+% end
+% J = 1/m * J;
+for k = 1:num_labels
+    yk = (y==k);
+    j = -yk'*log(hypothesis(:,k)) - (1-yk)'*log(1-hypothesis(:,k));
+    J = J + j;
+end
+J = 1/m * J;
 
 
 

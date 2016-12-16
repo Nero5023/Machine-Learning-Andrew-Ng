@@ -107,7 +107,7 @@ for t=1:m
 
     regularization1 = lambda/m * Theta1;
     regularization2 = lambda/m * Theta2;
-    regularization1(:,1) = 0;
+    regularization1(:,1) = 0; % the fisrt column do not need to add
     regularization2(:,1) = 0;
 
     Theta1_grad = Theta1_grad + regularization1;

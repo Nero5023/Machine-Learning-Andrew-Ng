@@ -61,14 +61,19 @@ Theta2_grad = zeros(size(Theta2));
 %               the regularization separately and then add them to Theta1_grad
 %               and Theta2_grad from Part 2.
 %
+
+
 X = [ones(m,1) X];
-z1 = X * Theta1';
-a1 = sigmoid(z1);
-a1 = [ones(m,1) a1];
-z2 = a1 * Theta2';
+a1 = X;
+z2 = a1 * Theta1';
 a2 = sigmoid(z2);
-hypothesis = a2;
-% Both method are right
+a2 = [ones(m,1) a2];
+z2 = [ones(m,1) z2];
+
+z3 = a2 * Theta2';
+a3 = sigmoid(z3);
+hypothesis = a3;
+% Both method are righta
 % 下面两个方法都是对的
 % for k = 1:num_labels
 %     for i = 1:m
@@ -90,9 +95,19 @@ regularizationValue = lambda/(2*m) * regularizationValue ;
 J = J + regularizationValue;
 
 
+for t=1:m
+    yt = ([1:num_labels]' == y(t));
+    a3t = a3(t,:)'; % 10*1
+    delta3 = a3t - yt;
+    z2t = z2(t,:)';
+    delta2 = Theta2'*delta3.*sigmoidGradient(z2t);
+    delta2 = delta2(2:end);
+    Theta1_grad = Theta1_grad + delta2*a1(t,:);
+    Theta2_grad = Theta2_grad + delta3*a2(t,:);
+end
 
-
-
+Theta1_grad = 1/m * Theta1_grad;
+Theta2_grad = 1/m * Theta2_grad;
 
 
 

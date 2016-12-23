@@ -19,17 +19,19 @@ grad = zeros(size(theta));
 %               You should set J to the cost and grad to the gradient.
 %
 
+% X = [ones(m,1) X];
+hypothesis = X * theta;
+
+J = 1/(2*m)*sum((hypothesis - y).^2);
+
+J = J + lambda/(2*m)*sum(theta(2:end,:).^2);
 
 
+grad = 1/m*X'*(hypothesis-y);
+regularValue = lambda/m*theta;
+regularValue(1) = 0;
 
-
-
-
-
-
-
-
-
+grad = grad + regularValue;
 % =========================================================================
 
 grad = grad(:);

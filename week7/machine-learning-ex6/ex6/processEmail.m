@@ -103,10 +103,11 @@ while ~isempty(email_contents)
             break;
         end
     end
-
-
-
-
+    % below codes also works 
+    % idx = strmatch(str, vocabList, 'exact');
+    % if ~isempty(idx)
+    %     word_indices = [word_indices; idx];
+    % end
 
 
 

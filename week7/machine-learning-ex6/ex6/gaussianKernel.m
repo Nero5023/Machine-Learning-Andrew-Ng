@@ -16,7 +16,10 @@ sim = 0;
 %
 %
 
-
+difference = x1 - x2;
+difference = sum(difference.^2);
+gaussian = -(difference/(2*sigma^2));
+sim = exp(gaussian);
 
 
 

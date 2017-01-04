@@ -114,6 +114,7 @@ fprintf('\n\n');
 fprintf('\nProgram paused. Press enter to continue.\n');
 pause;
 
+
 %% =================== Part 6: Try Your Own Emails =====================
 %  Now that you've trained the spam classifier, you can use it on your own
 %  emails! In the starter code, we have included spamSample1.txt,

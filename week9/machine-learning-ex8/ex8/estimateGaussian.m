@@ -22,8 +22,9 @@ sigma2 = zeros(n, 1);
 %
 
 
-
-
+mu = mean(X, 1)';
+% Because the var function will (by default) use 1/(m-1) , instead of 1/m
+sigma2 = var(X, 0, 1)' * (m-1) / m;
 
 
 
